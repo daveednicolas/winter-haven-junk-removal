@@ -15,19 +15,33 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Ensure navigation is visible */
+      nav { display: block !important; }
+      .hidden { display: none; }
+      @media (min-width: 768px) {
+        .md\\:block { display: block !important; }
+      }
+    </style>
   </head>
   <body class="bg-gray-50">
-    <nav class="bg-white shadow-lg">
-      <div class="max-w-7xl mx-auto px-4">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
-          <a href="/" class="text-2xl font-bold text-blue-700">
-            Winter Haven Junk Removal
-          </a>
-          <div class="hidden md:block space-x-4">
-            <a href="/" class="text-gray-700 hover:text-blue-600">Home</a>
-            <a href="/services" class="text-gray-700 hover:text-blue-600">Services</a>
-            <a href="/contact" class="text-gray-700 hover:text-blue-600">Contact</a>
-            <a href="tel:8635550123" class="bg-blue-600 text-white px-4 py-2 rounded">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="/" class="text-2xl font-bold text-blue-700">
+              Winter Haven Junk Removal
+            </a>
+          </div>
+          
+          <!-- Desktop Navigation -->
+          <div class="flex items-center space-x-6">
+            <a href="/" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+            <a href="/services" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Services</a>
+            <a href="/contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+            <a href="tel:8635550123" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">
               (863) 555-0123
             </a>
           </div>
@@ -35,13 +49,17 @@ const { title, description } = Astro.props;
       </div>
     </nav>
 
+    <!-- Main Content -->
     <main>
       <slot />
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
       <div class="max-w-7xl mx-auto px-4 text-center">
-        <p>© 2025 Winter Haven Junk Removal. All rights reserved.</p>
+        <h3 class="text-lg font-semibold mb-2">Winter Haven Junk Removal</h3>
+        <p class="text-gray-300 mb-2">Professional junk removal services in Winter Haven, FL</p>
+        <p class="text-gray-300">© 2025 Winter Haven Junk Removal. All rights reserved.</p>
       </div>
     </footer>
   </body>
