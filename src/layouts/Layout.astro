@@ -1,0 +1,48 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-50">
+    <nav class="bg-white shadow-lg">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+          <a href="/" class="text-2xl font-bold text-blue-700">
+            Winter Haven Junk Removal
+          </a>
+          <div class="hidden md:block space-x-4">
+            <a href="/" class="text-gray-700 hover:text-blue-600">Home</a>
+            <a href="/services" class="text-gray-700 hover:text-blue-600">Services</a>
+            <a href="/contact" class="text-gray-700 hover:text-blue-600">Contact</a>
+            <a href="tel:8635550123" class="bg-blue-600 text-white px-4 py-2 rounded">
+              (863) 555-0123
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <p>© 2025 Winter Haven Junk Removal. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
